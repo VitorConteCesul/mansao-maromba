@@ -3,12 +3,27 @@
 import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import NextImage from "next/image";
 import NextLink from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { LuSearch, LuShoppingBag, LuUser } from "react-icons/lu";
 
 export default function Header() {
     const [productsVisibility, setProductsVisibility] = useState(false);
-    
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // verifica se foi scrollado para baixo a tela, atualizando o state isScrolled para diminuir o tamanho do header
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 120) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     // timer
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -24,7 +39,7 @@ export default function Header() {
         // esse timer vai ser o tempo restante até sumir a div dos produtos
         timeoutRef.current = setTimeout(() => {
             setProductsVisibility(false);
-        }, 250); 
+        }, 250);
     };
 
     return (
@@ -32,20 +47,21 @@ export default function Header() {
             as="header"
             top={0}
             w="100%"
-            h="100px"
+            h={isScrolled ? "79px" : "100px"}
             zIndex={1040}
             position="sticky"
             alignItems="center"
             bg="#000000"
             color="white"
+            transition={"all 0.3s ease"}
         >
             <Flex
                 as="nav"
                 w="100%"
                 maxW="1020px"
                 mx="auto"
-                padding={"20px"}
-                paddingRight={"40px"}
+                padding={"25px"}
+                paddingRight={"33px"}
                 h="full"
                 alignItems="center"
                 justifyContent="space-between"
@@ -58,7 +74,12 @@ export default function Header() {
                                 alt="Bebidas Mansão Maromba"
                                 width={180}
                                 height={100}
-                                style={{ objectFit: "contain" }}
+                                style={{
+                                    width: isScrolled ? "100px" : "175px",
+                                    height: isScrolled ? "40px" : "70px",
+                                    transition: "all 0.2s ease",
+                                    
+                                }}
                             />
                         </NextLink>
                     </Box>
@@ -94,7 +115,7 @@ export default function Header() {
 
                             <Box
                                 position="fixed"
-                                top="108px"
+                                top={isScrolled ? "79px" : "100px"}
                                 left={0}
                                 width="100%"
                                 height="60px"
@@ -109,7 +130,7 @@ export default function Header() {
                                 pointerEvents={
                                     productsVisibility ? "auto" : "none"
                                 }
-                                transition="opacity 0.3s"
+                                transition=" all 0.2s ease-in-out"
                                 zIndex={1038}
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}

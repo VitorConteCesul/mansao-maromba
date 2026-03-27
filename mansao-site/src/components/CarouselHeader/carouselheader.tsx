@@ -1,6 +1,13 @@
-import { Box, Carousel, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import NextImage from "next/image";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
 
 const items = [
     {
@@ -34,69 +41,72 @@ const items = [
 ];
 
 export default function CarouselHeader() {
-    const [currentIndex, setCurrentIndex] = useState(1);
+    const [heeaderCurrentIndex, setHeaderCurrentIndex] = useState(1);
 
     return (
-        <Box w="100%">
-            <Carousel.Root
-                slideCount={items.length}
-                w="100%"
-                allowMouseDrag
-                onPageChange={(e) => setCurrentIndex(e.page + 1)}
-                autoplay={{ delay: 6000 }}
+        <Box w="100%" as="section">
+            <Swiper
+                modules={[Autoplay, Navigation]}
+                slidesPerView={1}
+                allowTouchMove={true}
+                autoplay={{ delay: 6000, disableOnInteraction: false }}
+                onSlideChange={(swiper) => setHeaderCurrentIndex(swiper.realIndex + 1)}
+                navigation={{
+                    prevEl: ".custom-prev-button",
+                    nextEl: ".custom-next-button",
+                }}
+                loop={true}
+                style={{ width: "100%" }}
             >
-                <Carousel.ItemGroup>
-                    {items.map((item, index) => (
-                        <Carousel.Item key={index} index={index}>
-                            <Box w="100%" h="auto">
-                                <NextImage
-                                    src={item.src}
-                                    alt={item.alt}
-                                    width={1920}
-                                    height={543}
-                                    sizes="100vw"
-                                    style={{
-                                        width: "100%",
-                                        height: "auto",
-                                    }}
-                                    
-                                    draggable={false}
-                                />
-                            </Box>
-                        </Carousel.Item>
-                    ))}
-                </Carousel.ItemGroup>
+                {items.map((item, index) => (
+                    <SwiperSlide key={index}>
+                        <Box w="100%" h="auto">
+                            <NextImage
+                                src={item.src}
+                                alt={item.alt}
+                                width={1920}
+                                height={543}
+                                sizes="100vw"
+                                style={{
+                                    width: "100%",
+                                    height: "auto",
+                                }}
+                                
+                            />
+                        </Box>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+            <Flex
+                marginTop="20px"
+                justifyContent="center"
+                alignItems="center"
+                gap={5}
+            >
+                <Box className="custom-prev-button" cursor="pointer" display="flex">
+                    <NextImage
+                        src="/assets/arrowLeft.svg"
+                        alt="Anterior"
+                        width={24}
+                        height={24}
+                        style={{ objectFit: "cover" }}
+                    />
+                </Box>
 
-                <Carousel.Control
-                    marginTop="12px"
-                    justifyContent="center"
-                    gap={5}
-                >
-                    <Carousel.PrevTrigger cursor="pointer" asChild>
-                        <NextImage
-                            src="/assets/arrowLeft.svg"
-                            alt="Anterior"
-                            width={24}
-                            height={24}
-                            objectFit="cover"
-                        />
-                    </Carousel.PrevTrigger>
+                <Text color="#000">
+                    {heeaderCurrentIndex} / {items.length}
+                </Text>
 
-                    <Text color="#000">
-                        {currentIndex} / {items.length}
-                    </Text>
-
-                    <Carousel.NextTrigger cursor="pointer" asChild>
-                        <NextImage
-                            src="/assets/arrowRight.svg"
-                            alt="Próximo"
-                            width={24}
-                            height={24}
-                            objectFit="cover"
-                        />
-                    </Carousel.NextTrigger>
-                </Carousel.Control>
-            </Carousel.Root>
+                <Box className="custom-next-button" cursor="pointer" display="flex">
+                    <NextImage
+                        src="/assets/arrowRight.svg"
+                        alt="Próximo"
+                        width={24}
+                        height={24}
+                        style={{ objectFit: "cover" }}
+                    />
+                </Box>
+            </Flex>
         </Box>
     );
 }
