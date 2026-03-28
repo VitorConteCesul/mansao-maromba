@@ -8,6 +8,3 @@ html, body {
     scroll-behavior: smooth;
     background: #fff;
 }
-[data-scope="carousel"][data-part="item-group"] {
-    scroll-behavior: smooth !important;
-}
