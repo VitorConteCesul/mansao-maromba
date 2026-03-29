@@ -61,7 +61,8 @@ export default function Header() {
                 maxW="1020px"
                 mx="auto"
                 padding={"25px"}
-                paddingRight={"33px"}
+                paddingLeft={"30px"}
+                paddingRight={"30px"}
                 h="full"
                 alignItems="center"
                 justifyContent="space-between"

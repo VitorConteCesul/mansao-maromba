@@ -49,7 +49,7 @@ export default function SwiperItems({ items }: SwiperItemsProps) {
                             alignItems="center"
                             justifyContent="center"
                             position="relative"
-                            padding="16px"
+                            padding="12px"
                         >
                             <ChakraLink
                                 as={NextLink}
