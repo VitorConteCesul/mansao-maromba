@@ -37,6 +37,7 @@ export default function Newsletter() {
                         textAlign={"center"}
                         marginBottom={"8px"}
                         color={"#000"}
+                        fontFamily={"var(--font-montserrat)"}
                     >
                         Newsletter
                     </Heading>
@@ -70,9 +71,11 @@ export default function Newsletter() {
                         >
                             <Input
                                 placeholder="E-mail"
+                                type="email"
                                 color="#000"
                                 borderRadius={0}
                                 borderColor="rgba(0, 0, 0, 0.3)"
+                                _placeholder={{ color: "rgba(0, 0, 0, 0.3)", opacity: 1 }}
                                 _hover={{ borderColor: "#000" }}
                                 transition="all 0.4s ease-in-out"
                                 paddingRight="4rem"
@@ -95,6 +98,14 @@ export default function Newsletter() {
                     height={536}
                 />
             </Box>
+            <Link
+                href="https://wa.me/5511999994314"
+                position={"fixed"}
+                bottom={"15px"}
+                right={"15px"}
+            >
+                <NextImage src="/assets/whatsapp.svg" alt="Whatsapp" height={45} width={45} style={{borderRadius: "100px"}}/>
+            </Link>
         </Flex>
     );
 }

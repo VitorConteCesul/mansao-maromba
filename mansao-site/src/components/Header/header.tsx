@@ -85,8 +85,8 @@ export default function Header() {
                         </NextLink>
                     </Box>
 
-                    <Flex as="ul" gap="30px" alignItems="center" m={0} p={0}>
-                        <Box as="li" paddingLeft={"30px"}>
+                    <Flex as="ul" gap="35px" alignItems="center">
+                        <Box as="li" paddingLeft={"32px"}>
                             <NextLink href="/">
                                 <Text
                                     fontSize="16px"
@@ -250,14 +250,14 @@ export default function Header() {
 
                         <Flex
                             position="absolute"
-                            top="-5px"
-                            right="-5px"
-                            bg="red.500"
+                            top="-8px"
+                            right="-10px"
+                            
                             w="16px"
                             h="16px"
                             alignItems="center"
                             justifyContent="center"
-                            borderRadius="full"
+                            
                         >
                             <Text fontSize="10px" fontWeight="bold">
                                 0

@@ -9,27 +9,21 @@ import {
     Link as ChakraLink,
     Heading,
     HStack,
-    Group,
-    Button,
-    InputGroup,
-    Input,
     Link,
 } from "@chakra-ui/react";
-import { Carousel } from "@chakra-ui/react";
+
 import NextImage from "next/image";
-import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+
 import NextLink from "next/link";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { LuShoppingBag } from "react-icons/lu";
 import SwiperItems from "@/components/SwiperItems/swiperitems";
-import { hover } from "framer-motion";
+
 import ImagemLancamentos from "@/components/ImagemLancamentos/image";
 import Newsletter from "@/components/Newsletter/newsletter";
+import { NuvemshopIcon } from "@/components/NuvemIconSvg/icon";
 
 const whiskyList = [
     {
@@ -178,6 +172,7 @@ export default function Home() {
                                 paddingBottom={"8px"}
                                 zIndex={9}
                                 textAlign={"center"}
+                                fontFamily={"var(--font-montserrat)"}
                             >
                                 OS MAIS VENDIDOS
                             </Text>
@@ -218,6 +213,7 @@ export default function Home() {
                             fontWeight={"700"}
                             fontSize={"24px"}
                             color={"#000"}
+                            fontFamily={"var(--font-montserrat)"}
                         >
                             LINHA PREMIUM MANSÃO MAROMBA
                         </Heading>
@@ -281,6 +277,7 @@ export default function Home() {
                         fontWeight={"700"}
                         fontSize={"24px"}
                         color={"#000"}
+                        fontFamily={"var(--font-montserrat)"}
                     >
                         NOSSOS LANÇAMENTOS
                     </Heading>
@@ -297,7 +294,196 @@ export default function Home() {
                 width={"100%"}
                 height={"auto"}
             >
-                <Newsletter/>
+                <Newsletter />
+            </Box>
+            <Box
+                as="footer"
+                overflowX={"hidden"}
+                overflowY={"hidden"}
+                paddingY={"40px"}
+                width={"100%"}
+                bg="#000"
+                height={"auto"}
+            >
+                <Box
+                    mx="auto"
+                    maxWidth={"1020px"}
+                    paddingX={"30px"}
+                    width={"100%"}
+                >
+                    <Box marginBottom={"16px"} width={"auto"}>
+                        <Box
+                            as="ul"
+                            paddingTop={"8px"}
+                            maxW={"960px"}
+                            textAlign={"center"}
+                        >
+                            <Box
+                                as="li"
+                                fontSize={"14px"}
+                                marginX={"10px"}
+                                marginY={"5px"}
+                                display={"inline-block"}
+                                textAlign={"center"}
+                            >
+                                <NextLink href="/">Início</NextLink>
+                            </Box>
+                            <Box
+                                as="li"
+                                marginX={"10px"}
+                                fontSize={"14px"}
+                                marginY={"5px"}
+                                display={"inline-block"}
+                                textAlign={"center"}
+                            >
+                                <NextLink href="https://gorodamansao.com/produtos/">
+                                    Produtos
+                                </NextLink>
+                            </Box>
+                            <Box
+                                as="li"
+                                marginX={"10px"}
+                                fontSize={"14px"}
+                                marginY={"5px"}
+                                display={"inline-block"}
+                                textAlign={"center"}
+                            >
+                                <NextLink href="https://gorodamansao.com/contato/">
+                                    Contato
+                                </NextLink>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
+                <Box
+                    marginBottom={"24px"}
+                    maxWidth={"960px"}
+                    flexDirection={"row"}
+                    justifyContent={"center"}
+                    mx="auto"
+                    display={"flex"}
+                    width={"100%"}
+                >
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/visa@2x.png"
+                        alt="Visa"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/mastercard@2x.png"
+                        alt="Mastercard"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/amex@2x.png"
+                        alt="Amex"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/diners@2x.png"
+                        alt="Diners"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/br/aura@2x.png"
+                        alt="Aura"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/br/elo@2x.png"
+                        alt="Elo"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/br/hipercard@2x.png"
+                        alt="Hipercard"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/br/discover@2x.png"
+                        alt="Discover"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/boleto@2x.png"
+                        alt="Boleto"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/payment/new_logos_payment/payment-method-types/pix@2x.png"
+                        alt="Pix"
+                        width={29}
+                        height={18}
+                        style={{ margin: "4px", borderRadius: "2px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/shipping/api/461@2x.png"
+                        alt=""
+                        width={40}
+                        height={25}
+                        style={{ margin: "4px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/shipping/api/4190@2x.png"
+                        alt=""
+                        width={40}
+                        height={25}
+                        style={{ margin: "4px" }}
+                    />
+                    <NextImage
+                        src="https://d26lpennugtm8s.cloudfront.net/assets/common/img/logos/shipping/api/3535@2x.png"
+                        alt=""
+                        width={40}
+                        height={25}
+                        style={{ margin: "4px" }}
+                    />
+                </Box>
+                <Flex
+                    marginY="8px"
+                    maxWidth={"960px"}
+                    mx="auto"
+                    justifyContent={"center"}
+                    width={"100%"}
+                >
+                    <Box marginTop={"5px"} width={"125px"} height={"auto"}>
+                        <Link
+                            title="Nuvemshop"
+                            rel="nofollow"
+                            target="_blank"
+                            href="https://www.nuvemshop.com.br/?utm_source=gorodamansao.com&utm_medium=referral&utm_campaign=footerSlogan/"
+                        >
+                            <NuvemshopIcon w="100%" h="auto" color={"white"} />
+                        </Link>
+                    </Box>
+                </Flex>
+                <Text
+                    marginRight={"8px"}
+                    fontSize={"12px"}
+                    color={"white"}
+                    textAlign={"center"}
+                    marginBottom={"8px"}
+                >
+                    Copyright Bebidas Mansão Maromba - 45989286000118 - 2026.
+                    Todos os direitos reservados.
+                </Text>
             </Box>
         </Box>
     );

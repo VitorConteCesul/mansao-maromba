@@ -23,14 +23,16 @@ interface SwiperItemsProps {
 
 export default function SwiperItems({ items }: SwiperItemsProps) {
     const [currentIndex, setCurrentIndex] = useState(1);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     return (
-        <Box maxWidth={"1020px"} marginX={"auto"}>
+        <Box maxWidth={"1020px"} marginX={"auto"} opacity={isLoaded ? 1 : 0.5} visibility={isLoaded ? "visible" : "hidden"}>
             <Swiper
                 modules={[Navigation, Pagination]}
                 slidesPerView={4}
                 slidesPerGroup={1}
                 loop={true}
+                onInit={() => setIsLoaded(true)}
                 navigation={{
                     prevEl: ".custom-prev-button-item",
                     nextEl: ".custom-next-button-item",
@@ -46,6 +48,7 @@ export default function SwiperItems({ items }: SwiperItemsProps) {
                             bg="white"
                             display="flex"
                             flexDirection="column"
+                            
                             alignItems="center"
                             justifyContent="center"
                             position="relative"
@@ -142,11 +145,7 @@ export default function SwiperItems({ items }: SwiperItemsProps) {
                     </SwiperSlide>
                 ))}
 
-                <Flex
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={5}
-                >
+                <Flex justifyContent="center" alignItems="center" gap={5}>
                     <Box
                         className="custom-prev-button-item"
                         cursor="pointer"
